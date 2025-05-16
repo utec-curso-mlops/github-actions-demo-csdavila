@@ -35,4 +35,4 @@ jobs:
         - name: Print Greetings
           run: echo "Hello World!"
         - name: Print Github Metadata
-          run: echo "{{ toJSON(github) }}"
+          run: echo "${{ toJSON(github) }}"
