@@ -1,6 +1,6 @@
 import pandas as pd
 import fire
-
+import os
 
 def split_data(df_data, perc_data_train):
     df_data_train = df_data.sample(frac=perc_data_train)
@@ -10,6 +10,7 @@ def split_data(df_data, perc_data_train):
 def process_split_data():
     df_data = pd.read_csv("data/in/application_data.csv")
     df_data_train, df_data_test = split_data(df_data, 0.7)
+    os.makedirs("../data/out", exist_ok=True)
     df_data_train.to_csv("../data/out/application_data_train.csv", index=False)
     df_data_test.to_csv("../data/out/application_data_test.csv", index=False)
 
