@@ -1,18 +1,22 @@
-name: Model CI / CD
+name: Model CI/CD
 on: workflow_dispatch
+
 jobs:
-    model-ci:
-        runs-on: ubuntu-latest
-        steps:
-            - name: GET code
-              uses: actions/checkout@v4
-            - name: Python setup
-              uses: actions/setup-python
-              with:
-                python-version: 3.12
-            - name: Install python dependencies
-              run: |
-               python pip install --upgrade pip
-               python pip install -r requirements.txt
-            - name: Split Dataset
-              run: python scr/0-split-dataset.py
+  model-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Split Dataset
+        run: python src/0-split-dataset.py
